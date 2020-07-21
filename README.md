@@ -1,21 +1,4 @@
-# DECEASED: FFMPEG with NewTek NDI® support on MacOS
 
-*NDI support in FFmpeg was removed in the FFMPEG source on the 20th of March 2019.
-
-https://github.com/FFmpeg/FFmpeg/commit/4b32f8b3ebfa011fcc5991bcaa97c3f5b61b49ad
-
-This is from a license dispute with Newtek ( https://trac.ffmpeg.org/ticket/7589 ) and NDI support has now been removed from FFmpeg.
-
-I will take these projects offline.
-
-Apologies for the inconvenience.
-
-Regards,
-
-Johan Els
-*
-
-# OLD README.md
 
 Because of the NewTek NDI® SDK license agreement, we cannot distribute the SDK with FFmpeg directly. Here I've tried to make compiling it as simple as possible and then use this version to build a point2point NDI link over the Internet.
 
@@ -36,12 +19,12 @@ brew install automake git nasm shtool texi2html theora wget \
     libass libtool libvorbis libvpx
 ```
 
-### Step 3 - Get the FFmpeg source
+### Step 3 - Get the FFmpeg source with NDI added back
 
 Clone FFmpeg repo from there GIT repo.
 
 ```bash
-git clone http://source.ffmpeg.org/git/ffmpeg.git ffmpeg
+git clone https://github.com/thpryrchn/FFmpeg.git ffmpeg
 cd ffmpeg
 ```
 
@@ -49,8 +32,8 @@ cd ffmpeg
 
 Symbolic links to resolve locations:
 ```bash
-sudo ln -s /NewTek\ NDI\ SDK/ ndi
-sudo ln -s /usr/local/lib/libndi.3.dylib /usr/local/lib/libndi.dylib
+sudo ln -s Library/NewTek\ NDI\ SDK/ ndi
+sudo ln -s /usr/local/lib/libndi.4.dylib /usr/local/lib/libndi.dylib
 ```
 
 ### Step 5 - Configure the FFmpeg build
