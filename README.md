@@ -15,7 +15,7 @@ Install build tools using Brew. If you are not using brew or want to compile the
 
 ```bash
 brew install automake git nasm shtool texi2html theora wget \
-    fdk-aac lame opus sdl x264 x265 xvid \
+    fdk-aac lame opus sdl x264 x265 pkg-config xvid \
     libass libtool libvorbis libvpx
 ```
 
