@@ -33,21 +33,21 @@ Here I give Three options. The first is with most of the FFmpeg options enabled.
 
 #### Option 1 - Have Homebrew make FFmpeg with all options!
 
-'''bash
+```bash
 brew tap thpryrchn/ffmpeg
 brew uninstall --force --ignore-dependencies ffmpeg
 brew install thpryrchn/ffmpeg/ffmpeg $(brew options homebrew-ffmpeg/ffmpeg | grep -vE '\s' | grep -- '--with-' | grep -vi chromaprint | tr '\n' ' ') --head
-'''
+```
 
 #### Option 2 - FFmpeg large build
 
 Clone FFmpeg repo from there GIT repo.
 
-'''bash
+```bash
 git clone https://github.com/thpryrchn/FFmpeg.git ffmpeg
 cd ffmpeg
-'''
-
+```
+Then,
 
 ```bash
 ./configure  --prefix=/usr/local \
