@@ -19,7 +19,27 @@ brew install automake git nasm shtool texi2html theora wget \
     libass libtool libvorbis libvpx
 ```
 
-### Step 3 - Get the FFmpeg source with NDI added back
+### Step 3 - Link into NewTek NDI® SDK
+
+Symbolic links to resolve locations:
+```bash
+sudo ln -s Library/NewTek\ NDI\ SDK/ NDI
+sudo ln -s /usr/local/lib/libndi.4.dylib /usr/local/lib/libndi.dylib
+```
+
+### Step 4 - Build FFmpeg
+
+Here I give Three options. The first is with most of the FFmpeg options enabled. This results in a much bigger build, but also much better support.
+
+#### Option 1 - Have Homebrew make FFmpeg with all options!
+
+'''bash
+brew tap thpryrchn/ffmpeg
+brew uninstall --force --ignore-dependencies ffmpeg
+brew install thpryrchn/ffmpeg/ffmpeg $(brew options homebrew-ffmpeg/ffmpeg | grep -vE '\s' | grep -- '--with-' | grep -vi chromaprint | tr '\n' ' ') --head
+'''
+
+#### Option 2 - FFmpeg large build
 
 Clone FFmpeg repo from there GIT repo.
 
@@ -28,19 +48,6 @@ git clone https://github.com/thpryrchn/FFmpeg.git ffmpeg
 cd ffmpeg
 ```
 
-### Step 4 - Link into NewTek NDI® SDK
-
-Symbolic links to resolve locations:
-```bash
-sudo ln -s Library/NewTek\ NDI\ SDK/ ndi
-sudo ln -s /usr/local/lib/libndi.4.dylib /usr/local/lib/libndi.dylib
-```
-
-### Step 5 - Configure the FFmpeg build
-
-Here I give two options. The first is with most of the FFmpeg options enabled. This results in a much bigger build, but also much better support.
-
-#### Option 1 - FFmpeg large build
 
 ```bash
 ./configure  --prefix=/usr/local \
@@ -64,7 +71,7 @@ Here I give two options. The first is with most of the FFmpeg options enabled. T
   --samples=fate-suite/
 ```
 
-#### Option 2 - FFmpeg simple build
+#### Option 3 - FFmpeg simple build
 
 ```bash
 ./configure --enable-nonfree \
@@ -76,13 +83,14 @@ Here I give two options. The first is with most of the FFmpeg options enabled. T
   --extra-ldflags="-L$PWD/ffmpeg/ndi/lib/x64"
 ```
 
-### Step 6 - Let it build
+##### Let it build
 
 ```bash
 make
+sudo make install
 ```
 
-### Step 7 - Quick test
+### Quick test
 
 This works on the same machine, from multiple terminals.
 
