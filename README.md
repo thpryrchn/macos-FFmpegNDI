@@ -43,10 +43,10 @@ brew install thpryrchn/ffmpeg/ffmpeg $(brew options homebrew-ffmpeg/ffmpeg | gre
 
 Clone FFmpeg repo from there GIT repo.
 
-```bash
+'''bash
 git clone https://github.com/thpryrchn/FFmpeg.git ffmpeg
 cd ffmpeg
-```
+'''
 
 
 ```bash
