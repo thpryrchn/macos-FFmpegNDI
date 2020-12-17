@@ -35,6 +35,8 @@ Here I give Three options. The first is with most of the FFmpeg options enabled.
 
 ```bash
 brew tap thpryrchn/ffmpeg
+brew install chromaprint
+brew install amiaopensource/amiaos/decklinksdk
 brew uninstall --force --ignore-dependencies ffmpeg
 brew install thpryrchn/ffmpeg/ffmpeg $(brew options thpryrchn/ffmpeg/ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ') --head
 ```
